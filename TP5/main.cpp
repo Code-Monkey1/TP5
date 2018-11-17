@@ -314,6 +314,6 @@ int main() {
 	delete d2;
 
 	delete uptest;
-
+	system("pause");
 	return 0;
 }

@@ -8,22 +8,26 @@
 #include "utilisateurPremium.h"
 #include "utilisateurRegulier.h"
 
-Utilisateur* GestionnaireUtilisateurs::getUtilisateurParIndex(int i) const
+template< typename T, typename C, typename D>
+Utilisateur* GestionnaireUtilisateurs<T,C,D>::getUtilisateurParIndex(int i) const
 {
 	return utilisateurs_[i];
 }
 
-vector<Utilisateur*> GestionnaireUtilisateurs::getUtilisateurs() const
+template< typename T, typename C, typename D>
+vector<Utilisateur*> GestionnaireUtilisateurs<T, C, D>::getUtilisateurs() const
 {
 	return utilisateurs_;
 }
 
-int GestionnaireUtilisateurs::getNombreUtilisateurs() const
+template< typename T, typename C, typename D>
+int GestionnaireUtilisateurs<T, C, D>::getNombreUtilisateurs() const
 {
 	return utilisateurs_.size();
 }
 
-int GestionnaireUtilisateurs::getIndexDe(Utilisateur * utilisateur) const
+template< typename T, typename C, typename D>
+int GestionnaireUtilisateurs<T, C, D>::getIndexDe(Utilisateur * utilisateur) const
 {
 	int index = -1;
 	for (int i = 0; i < utilisateurs_.size(); i++) {
@@ -35,7 +39,8 @@ int GestionnaireUtilisateurs::getIndexDe(Utilisateur * utilisateur) const
 	return index;
 }
 
-GestionnaireUtilisateurs& GestionnaireUtilisateurs::ajouterUtilisateur(Utilisateur * utilisateur)
+template< typename T, typename C, typename D>
+GestionnaireUtilisateurs<T, C, D>& GestionnaireUtilisateurs<T, C, D>::ajouterUtilisateur(Utilisateur * utilisateur)
 {
 	UtilisateurRegulier* utilisateurRegulier = dynamic_cast<UtilisateurRegulier*>(utilisateur);
 	UtilisateurPremium* utilisateurPremium = dynamic_cast<UtilisateurPremium*>(utilisateur);

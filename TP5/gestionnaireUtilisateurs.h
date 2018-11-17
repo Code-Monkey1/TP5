@@ -7,10 +7,12 @@
 #pragma once
 
 #include "utilisateur.h"
-
+#include "gestionnaireGenerique.h"
 #include <vector>
 
-class GestionnaireUtilisateurs {
+template< typename T, typename C, typename D>
+class GestionnaireUtilisateurs : public GestionnaireGenerique<T,C,D>
+{
 public:
 	Utilisateur* getUtilisateurParIndex(int i) const;
 	vector<Utilisateur*> getUtilisateurs() const;

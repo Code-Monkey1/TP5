@@ -61,8 +61,7 @@ private:
 	string nom_;
 	vector<Transfert*> transferts_;
 
-	// TODO : À modifier :
-	vector<double> comptes_;
+	//vector<double> comptes_; Cet attribut est supprimé car le compte est directement associé à l'utilisateur par pair
 
 	// Retiré :
 	// vector<Utilisateur*> utilisateurs_;

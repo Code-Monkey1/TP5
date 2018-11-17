@@ -3,7 +3,7 @@
 * Date: 4 novembre 2018
 * Auteur: Ryan Hardie
 *******************************************/
-/*
+
 #ifndef GESTIONNAIREGENERIQUE_H
 #define GESTIONNAIREGENERIQUE_H
 
@@ -18,7 +18,7 @@ public:
 	int getNombreElements() const;
 	D getElementParIndex(int i) const;
 
-	protected
+protected:
 		C conteneur_;
 };
 
@@ -40,4 +40,3 @@ inline D GestionnaireGenerique<T, C, D>::getElementParIndex(int i) const
 	return conteneur_[i];	//Pas sur si c'est bon
 }
 #endif // !GESTIONNAIREGENERIQUE_H
-*/

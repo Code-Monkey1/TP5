@@ -45,8 +45,8 @@ class FoncteurIntervalle
 {
 public:
 	FoncteurIntervalle(double borneInf, double borneSup): borneInf_(borneInf), borneSup_(borneSup) {};
-	bool operator()(double montant) {
-		return (montant >= borneInf_ && montant <= borneSup_);
+	bool operator()(pair<Utilisateur*, double> unePaire) {
+		return (unePaire.second >= borneInf_ && unePaire.second <= borneSup_);
 	};
 private:
 	double borneInf_, borneSup_;

@@ -7,16 +7,25 @@
 #include <algorithm>
 #include <vector>
 
-class GestionnaireDepenses {
+template< typename T, typename C, typename D >
+class GestionnaireDepenses : public GestionnaireGenerique{
 public:
-	vector<Depense*> getDepenses() const;
-	int getNombreDepenses() const;
-	int getIndexDe(Depense * depense) const;
-	Depense* getDepenseParIndex(int i) const;
+	//vector<Depense*> getDepenses() const;
+	//int getNombreDepenses() const;
+	//int getIndexDe(Depense * depense) const;
+	//Depense* getDepenseParIndex(int i) const;
+	
 	double getTotalDepenses() const;
 
-	GestionnaireDepenses& ajouterDepense(Depense* depense);
+	//GestionnaireDepenses& ajouterDepense(Depense* depense);
 
-private:
-	vector<Depense*> depenses_;
+//private:
+	//vector<Depense*> depenses_;
 };
+
+template<typename T, typename C, typename D>
+inline double GestionnaireDepenses<T, C, D>::getTotalDepenses() const
+{
+	double somme = accumulate(conteneur_.begin(), conteneur_.end());
+	return somme;
+}

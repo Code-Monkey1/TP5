@@ -1,3 +1,5 @@
+/*
+
 #include "gestionnaireDepenses.h"
 
 #include <algorithm>
@@ -45,3 +47,5 @@ GestionnaireDepenses & GestionnaireDepenses::ajouterDepense(Depense * depense)
 	depenses_.push_back(depense);
 	return *this;
 }
+
+*/

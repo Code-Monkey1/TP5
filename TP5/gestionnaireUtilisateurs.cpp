@@ -6,10 +6,13 @@
 
 #include <algorithm>
 #include <map>
+#include <functional>
+#include <iterator>
+#include "foncteur.h"
 #include "gestionnaireUtilisateurs.h"
 #include "utilisateurPremium.h"
 #include "utilisateurRegulier.h"
-
+using namespace std::placeholders;
 
 vector<double> GestionnaireUtilisateurs::getComptes() const
 {
@@ -62,12 +65,17 @@ pair<Utilisateur*, double>& GestionnaireUtilisateurs::getMin() const
 
 Utilisateur * GestionnaireUtilisateurs::getUtilisateurSuivant(Utilisateur * utilisateur, double montant) const
 {
-	return nullptr;
+
+	auto it = find_if( mapUtilisateur.begin(), mapUtilisateur.end(), bind(equal_to<Utilisateur*>(), utilisateur, _1) );
+	it++;
+	return it->first;
 }
 
 vector<pair<Utilisateur*, double>> GestionnaireUtilisateurs::getUtilisateursEntre(double borneInf, double borneSup) const
 {
-	return vector<pair<Utilisateur*, double>>();
+	vector<pair<Utilisateur*, double>> utilisateurDansIntervalle;
+	copy_if(mapUtilisateur.begin(), mapUtilisateur.end(), back_inserter(utilisateurDansIntervalle), FoncteurIntervalle(borneInf, borneSup));
+	return utilisateurDansIntervalle;
 }
 
 GestionnaireUtilisateurs & GestionnaireUtilisateurs::setCompte(pair<Utilisateur*, double> p)

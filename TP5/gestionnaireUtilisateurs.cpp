@@ -16,8 +16,13 @@ using namespace std::placeholders;
 
 vector<double> GestionnaireUtilisateurs::getComptes() const
 {
+	vector<pair<Utilisateur*, double>> vecteurTemp;
 	vector<double> vecteurComptes;
-	copy(mapUtilisateur.begin(), mapUtilisateur.end(), back_inserter(vecteurComptes));
+	copy(mapUtilisateur.begin(), mapUtilisateur.end(), back_inserter(vecteurTemp));
+	for (unsigned i = 0; i < vecteurTemp.size(); i++)
+	{
+		vecteurComptes.push_back(vecteurTemp[i].second);
+	}
 	return vecteurComptes;
 }
 
@@ -80,5 +85,6 @@ vector<pair<Utilisateur*, double>> GestionnaireUtilisateurs::getUtilisateursEntr
 
 GestionnaireUtilisateurs & GestionnaireUtilisateurs::setCompte(pair<Utilisateur*, double> p)
 {
-	// TODO: insérer une instruction return ici
+	auto it = find(mapUtilisateur.begin(), mapUtilisateur.end(), p.first);
+	it->second = p.second;
 }

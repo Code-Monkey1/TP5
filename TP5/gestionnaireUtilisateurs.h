@@ -26,7 +26,4 @@ public:
 	Utilisateur* getUtilisateurSuivant(Utilisateur* utilisateur, double montant) const;
 	vector<pair<Utilisateur*, double>> getUtilisateursEntre(double borneInf, double borneSup) const;
 	GestionnaireUtilisateurs& setCompte(pair<Utilisateur*, double> p);
-
-private:
-	map<Utilisateur*, double> mapUtilisateur;
 };

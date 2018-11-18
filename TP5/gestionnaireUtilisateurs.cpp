@@ -18,7 +18,7 @@ vector<double> GestionnaireUtilisateurs::getComptes() const
 {
 	vector<pair<Utilisateur*, double>> vecteurTemp;
 	vector<double> vecteurComptes;
-	copy(mapUtilisateur.begin(), mapUtilisateur.end(), back_inserter(vecteurTemp));
+	copy(conteneur_.begin(), conteneur_.end(), back_inserter(vecteurTemp));
 	for (unsigned i = 0; i < vecteurTemp.size(); i++)
 	{
 		vecteurComptes.push_back(vecteurTemp[i].second);
@@ -29,7 +29,7 @@ vector<double> GestionnaireUtilisateurs::getComptes() const
 bool GestionnaireUtilisateurs::estExistant(Utilisateur * utilisateur) const
 {
 	bool estExistant = false;
-	if (mapUtilisateur.find(utilisateur) != mapUtilisateur.end()) {
+	if (conteneur_.find(utilisateur) != conteneur_.end()) {
 		estExistant = true;
 	}
 	return estExistant;
@@ -41,8 +41,8 @@ void GestionnaireUtilisateurs::mettreAJourComptes(Utilisateur * payePar, double 
 
 pair<Utilisateur*, double>& GestionnaireUtilisateurs::getMax() const
 {	
-	auto max = mapUtilisateur.begin();
-	for (auto it = mapUtilisateur.begin(); it != mapUtilisateur.end(); ++it)
+	auto max = conteneur_.begin();
+	for (auto it = conteneur_.begin(); it != conteneur_.end(); ++it)
 	{
 		if (it->second > max->second)
 		{
@@ -56,8 +56,8 @@ pair<Utilisateur*, double>& GestionnaireUtilisateurs::getMax() const
 
 pair<Utilisateur*, double>& GestionnaireUtilisateurs::getMin() const
 {
-	auto min = mapUtilisateur.begin();
-	for (auto it = mapUtilisateur.begin(); it != mapUtilisateur.end(); ++it)
+	auto min = conteneur_.begin();
+	for (auto it = conteneur_.begin(); it != conteneur_.end(); ++it)
 	{
 		if (it->second < min->second)
 		{
@@ -71,7 +71,7 @@ pair<Utilisateur*, double>& GestionnaireUtilisateurs::getMin() const
 Utilisateur * GestionnaireUtilisateurs::getUtilisateurSuivant(Utilisateur * utilisateur, double montant) const
 {
 
-	auto it = find_if( mapUtilisateur.begin(), mapUtilisateur.end(), bind(equal_to<Utilisateur*>(), utilisateur, _1) );
+	auto it = find_if( conteneur_.begin(), conteneur_.end(), bind(equal_to<Utilisateur*>(), utilisateur, _1) );
 	it++;
 	return it->first;
 }
@@ -79,12 +79,12 @@ Utilisateur * GestionnaireUtilisateurs::getUtilisateurSuivant(Utilisateur * util
 vector<pair<Utilisateur*, double>> GestionnaireUtilisateurs::getUtilisateursEntre(double borneInf, double borneSup) const
 {
 	vector<pair<Utilisateur*, double>> utilisateurDansIntervalle;
-	copy_if(mapUtilisateur.begin(), mapUtilisateur.end(), back_inserter(utilisateurDansIntervalle), FoncteurIntervalle(borneInf, borneSup));
+	copy_if(conteneur_.begin(), conteneur_.end(), back_inserter(utilisateurDansIntervalle), FoncteurIntervalle(borneInf, borneSup));
 	return utilisateurDansIntervalle;
 }
 
 GestionnaireUtilisateurs & GestionnaireUtilisateurs::setCompte(pair<Utilisateur*, double> p)
 {
-	auto it = find(mapUtilisateur.begin(), mapUtilisateur.end(), p.first);
+	auto it = find(conteneur_.begin(), conteneur_.end(), p.first);
 	it->second = p.second;
 }

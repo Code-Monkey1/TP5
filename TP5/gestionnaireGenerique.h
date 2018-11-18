@@ -14,7 +14,7 @@ class GestionnaireGenerique
 public:
 
 	C getConteneur() const;
-	virtual void ajouter(T t) = 0;	//Fonction virtuelle pure pour que la classe soit abstraite
+	void ajouter(T t);
 	int getNombreElements() const;
 	D getElementParIndex(int i) const;
 

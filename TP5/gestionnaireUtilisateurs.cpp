@@ -4,63 +4,73 @@
 * Auteur: Ryan Hardie
 *******************************************/
 
+#include <algorithm>
+#include <map>
 #include "gestionnaireUtilisateurs.h"
 #include "utilisateurPremium.h"
 #include "utilisateurRegulier.h"
 
-template< typename T, typename C, typename D>
-Utilisateur* GestionnaireUtilisateurs<T,C,D>::getUtilisateurParIndex(int i) const
+
+vector<double> GestionnaireUtilisateurs::getComptes() const
 {
-	return utilisateurs_[i];
+	vector<double> vecteurComptes;
+	copy(mapUtilisateur.begin(), mapUtilisateur.end(), back_inserter(vecteurComptes));
+	return vecteurComptes;
 }
 
-template< typename T, typename C, typename D>
-vector<Utilisateur*> GestionnaireUtilisateurs<T, C, D>::getUtilisateurs() const
+bool GestionnaireUtilisateurs::estExistant(Utilisateur * utilisateur) const
 {
-	return utilisateurs_;
+	bool estExistant = false;
+	if (mapUtilisateur.find(utilisateur) != mapUtilisateur.end()) {
+		estExistant = true;
+	}
+	return estExistant;
 }
 
-template< typename T, typename C, typename D>
-int GestionnaireUtilisateurs<T, C, D>::getNombreUtilisateurs() const
+void GestionnaireUtilisateurs::mettreAJourComptes(Utilisateur * payePar, double montant)
 {
-	return utilisateurs_.size();
 }
 
-template< typename T, typename C, typename D>
-int GestionnaireUtilisateurs<T, C, D>::getIndexDe(Utilisateur * utilisateur) const
-{
-	int index = -1;
-	for (int i = 0; i < utilisateurs_.size(); i++) {
-		if (utilisateurs_[i] == utilisateur) {
-			index = i;
-			break;
+pair<Utilisateur*, double>& GestionnaireUtilisateurs::getMax() const
+{	
+	auto max = mapUtilisateur.begin();
+	for (auto it = mapUtilisateur.begin(); it != mapUtilisateur.end(); ++it)
+	{
+		if (it->second > max->second)
+		{
+			max = it;
 		}
 	}
-	return index;
+	pair<Utilisateur*, double> maPaire = make_pair(max->first, max->second);
+	return maPaire;
+
 }
 
-template< typename T, typename C, typename D>
-GestionnaireUtilisateurs<T, C, D>& GestionnaireUtilisateurs<T, C, D>::ajouterUtilisateur(Utilisateur * utilisateur)
+pair<Utilisateur*, double>& GestionnaireUtilisateurs::getMin() const
 {
-	UtilisateurRegulier* utilisateurRegulier = dynamic_cast<UtilisateurRegulier*>(utilisateur);
-	UtilisateurPremium* utilisateurPremium = dynamic_cast<UtilisateurPremium*>(utilisateur);
-
-	if (utilisateurRegulier != nullptr) {
-		if (!utilisateurRegulier->getPossedeGroupe()) {
-			utilisateurRegulier->setPossedeGroupe(true);
-		}
-		else {
-			cout << "Erreur : L'utilisateur " << utilisateur->getNom() << " n'est pas un utilisateur premium et est deja dans un groupe." << endl;
-			return *this;
+	auto min = mapUtilisateur.begin();
+	for (auto it = mapUtilisateur.begin(); it != mapUtilisateur.end(); ++it)
+	{
+		if (it->second < min->second)
+		{
+			min = it;
 		}
 	}
-	else {
-		if (utilisateurPremium != nullptr && utilisateurPremium->getJoursRestants() <= 0) {
-			cout << "Erreur : L'utilisateur " << utilisateur->getNom() << " doit renouveler son abonnement premium" << endl;
-			return *this;
-		}
-	}
+	pair<Utilisateur*, double> maPaire = make_pair(min->first, min->second);
+	return maPaire;
+}
 
-	utilisateurs_.push_back(utilisateur);
-	return *this;
+Utilisateur * GestionnaireUtilisateurs::getUtilisateurSuivant(Utilisateur * utilisateur, double montant) const
+{
+	return nullptr;
+}
+
+vector<pair<Utilisateur*, double>> GestionnaireUtilisateurs::getUtilisateursEntre(double borneInf, double borneSup) const
+{
+	return vector<pair<Utilisateur*, double>>();
+}
+
+GestionnaireUtilisateurs & GestionnaireUtilisateurs::setCompte(pair<Utilisateur*, double> p)
+{
+	// TODO: insérer une instruction return ici
 }

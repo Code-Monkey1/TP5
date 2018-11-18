@@ -6,22 +6,27 @@
 
 #pragma once
 
+#include <iostream>
+#include <map>
+#include <utility>
+#include <iterator>
+#include <vector>
 #include "utilisateur.h"
 #include "gestionnaireGenerique.h"
-#include <vector>
 
-template< typename T, typename C, typename D>
-class GestionnaireUtilisateurs : public GestionnaireGenerique<T,C,D>
+class GestionnaireUtilisateurs : public GestionnaireGenerique<Utilisateur*, map<Utilisateur*, double>, Utilisateur>
 {
 public:
-	Utilisateur* getUtilisateurParIndex(int i) const;
-	vector<Utilisateur*> getUtilisateurs() const;
-	int getNombreUtilisateurs() const;
-	int getIndexDe(Utilisateur* utilisateur) const;
-
 	
-	GestionnaireUtilisateurs& ajouterUtilisateur(Utilisateur* utilisateur);
+	vector<double> getComptes() const;
+	bool estExistant(Utilisateur* utilisateur) const;
+	void mettreAJourComptes(Utilisateur* payePar, double montant);
+	pair<Utilisateur*, double>& getMax() const;
+	pair<Utilisateur*, double>& getMin() const;
+	Utilisateur* getUtilisateurSuivant(Utilisateur* utilisateur, double montant) const;
+	vector<pair<Utilisateur*, double>> getUtilisateursEntre(double borneInf, double borneSup) const;
+	GestionnaireUtilisateurs& setCompte(pair<Utilisateur*, double> p);
 
 private:
-	vector<Utilisateur*> utilisateurs_;
+	map<Utilisateur*, double> mapUtilisateur;
 };

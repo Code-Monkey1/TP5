@@ -4,16 +4,18 @@
 * Auteur: Ryan Hardie
 *******************************************/
 
-/*
-	Foncteur AjouterDepense
 
-	Méthode :
-	Constructeur
-	vector<Depense*>& operator()();
-
-	Attribut :
+class AjouterDepense
+{
+public:
+	AjouterDepense(Depense*) {};
+	vector<Depense*>& operator()(Depense* depense) {
+		conteneur_.push_back(depense);
+		return conteneur_;
+	};
+private:
 	vector<Depense*> conteneur_;
-*/
+};
 
 
 
@@ -27,7 +29,6 @@ map<Utilisateur*, double>& operator()();
 Attribut :
 map<Utilisateur*, double> conteneur_;
 */
-
 
 
 /*

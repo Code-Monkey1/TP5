@@ -6,8 +6,8 @@
 
 double GestionnaireDepenses::getTotalDepenses() const
 {
-	double somme = accumulate(conteneur_.begin(), conteneur_.end(), 0);
-	return somme;
+	double totalDepenses = accumulate(conteneur_.begin(), conteneur_.end(), 0);
+	return totalDepenses;
 	/*
 	double totalDepenses = 0;
 	for (int i = 0; i < conteneur_.size(); i++) {

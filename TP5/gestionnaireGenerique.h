@@ -29,6 +29,12 @@ inline C GestionnaireGenerique<T, C, D>::getConteneur() const
 }
 
 template<typename T, typename C, typename D>
+inline void GestionnaireGenerique<T, C, D>::ajouter(T t)
+{
+	copy(t, back_inserter(conteneur_));
+}
+
+template<typename T, typename C, typename D>
 inline int GestionnaireGenerique<T, C, D>::getNombreElements() const
 {
 	return conteneur_.size();	//Pas sur si c'est bon

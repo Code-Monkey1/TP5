@@ -3,8 +3,6 @@
 #include "depense.h"
 #include "utilisateur.h"
 #include "gestionnaireGenerique.h"
-#include <numeric>
-#include <algorithm>
 #include <vector>
 
 

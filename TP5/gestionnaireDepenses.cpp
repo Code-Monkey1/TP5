@@ -1,8 +1,4 @@
-
 #include "gestionnaireDepenses.h"
-
-#include <algorithm>
-#include <functional>
 
 double GestionnaireDepenses::getTotalDepenses() const
 {

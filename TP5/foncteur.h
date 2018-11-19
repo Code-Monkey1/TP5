@@ -14,8 +14,19 @@
 	Attribut :
 	vector<Depense*> conteneur_;
 */
-
-
+//
+//class AjouterDepense
+//{
+//public:
+//	AjouterDepense() {};
+//	~AjouterDepense() {};
+//	vector<Depense*>& operator()() {
+//	
+//	};
+//private:
+//	vector<Depense*> conteneur_;
+//};
+//
 
 /*
 Foncteur AjouterUtilisateur
@@ -29,23 +40,11 @@ map<Utilisateur*, double> conteneur_;
 */
 
 
-
-/*
-Foncteur FoncteurIntervalle
-
-Méthode :
-Constructeur
-bool operator()();
-
-Attribut :
-double borneInf_, borneSup_;
-*/
-
 class FoncteurIntervalle
 {
 public:
 	FoncteurIntervalle(double borneInf, double borneSup): borneInf_(borneInf), borneSup_(borneSup) {};
-	bool operator()(pair<Utilisateur*, double> unePaire) {
+	bool operator()(pair<Utilisateur*,double> unePaire) {
 		return (unePaire.second >= borneInf_ && unePaire.second <= borneSup_);
 	};
 private:

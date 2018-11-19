@@ -37,12 +37,26 @@ inline void GestionnaireGenerique<T, C, D>::ajouter(T t)
 template<typename T, typename C, typename D>
 inline int GestionnaireGenerique<T, C, D>::getNombreElements() const
 {
-	return conteneur_.size();	//Pas sur si c'est bon
+	return conteneur_.size();
 }
 
 template<typename T, typename C, typename D>
 inline D GestionnaireGenerique<T, C, D>::getElementParIndex(int i) const
 {
-	return conteneur_[i];	//Pas sur si c'est bon
+	/*if (D == (Utilisateur*) ) {
+
+		int compteur = 0;
+		for (map<Utilisateur*, double>::iterator it = conteneur_.begin(); it != conteneur_.end(); ++it) {
+
+			if (counter == index) {
+				return it->first;
+			}
+			compteur++;
+		}
+	}
+	else
+	{*/
+	return conteneur_[i];
+	//}
 }
 #endif // !GESTIONNAIREGENERIQUE_H

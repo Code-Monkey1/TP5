@@ -14,7 +14,7 @@
 #include "utilisateur.h"
 #include "gestionnaireGenerique.h"
 
-class GestionnaireUtilisateurs : public GestionnaireGenerique<Utilisateur*, map<Utilisateur*, double>, Utilisateur>
+class GestionnaireUtilisateurs : public GestionnaireGenerique<Utilisateur*, map<Utilisateur*, double>, Utilisateur*>
 {
 public:
 	

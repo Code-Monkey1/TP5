@@ -9,6 +9,8 @@
 #include <numeric>
 #include <iterator>
 #include <utility>
+#include "gestionnaireDepenses.h"
+#include "gestionnaireUtilisateurs.h"
 
 using namespace std;
 

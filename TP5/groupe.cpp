@@ -83,6 +83,7 @@ void Groupe::setNom(const string& nom) {
 Groupe& Groupe::ajouterDepense(double montant, Utilisateur* payePar, const string& nom, const string& lieu)
 {
 	// Trouver l'index de l'auteur de la depense
+
 	//OLD: int indexPayePar = gestionnaireUtilisateurs_->getIndexDe(payePar);
 
 	auto it = find(gestionnaireUtilisateurs_->getConteneur().begin(), gestionnaireUtilisateurs_->getConteneur().end(), payePar);
@@ -90,6 +91,12 @@ Groupe& Groupe::ajouterDepense(double montant, Utilisateur* payePar, const strin
 	/*OLD:	if (indexPayePar == -1) {
 				return *this;
 			}*/
+
+	if (it == gestionnaireUtilisateurs_->getConteneur().end())
+	{
+		return *this;
+	}
+
 
 	Depense* depense = new Depense(nom, montant, lieu);
 
@@ -103,9 +110,10 @@ Groupe& Groupe::ajouterDepense(double montant, Utilisateur* payePar, const strin
 
 	// Mise a jour des comptes
 	double montantReparti = depense->getMontant() / gestionnaireUtilisateurs_->getNombreElements();
-	gestionnaireUtilisateurs_->getComptes()[indexPayePar] += depense->getMontant() - montantReparti;
+	//OLD: gestionnaireUtilisateurs_->getComptes()[indexPayePar] += depense->getMontant() - montantReparti;
+	(gestionnaireUtilisateurs_->getConteneur())[payePar] += depense->getMontant() - montantReparti;
 	for (int i = 0; i < gestionnaireUtilisateurs_->getNombreElements(); i++) {
-		if (i != indexPayePar) {
+		if (gestionnaireUtilisateurs_->getComptes()[i]::iterator unIterateur != it) {
 			gestionnaireUtilisateurs_->getComptes()[i] -= montantReparti;
 		}
 	}

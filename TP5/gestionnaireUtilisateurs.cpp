@@ -37,6 +37,17 @@ bool GestionnaireUtilisateurs::estExistant(Utilisateur * utilisateur) const
 
 void GestionnaireUtilisateurs::mettreAJourComptes(Utilisateur * payePar, double montant)
 {
+	double montantReparti = montant/ getNombreElements();
+	conteneur_[payePar] += montant - montantReparti;
+	map<Utilisateur*,double>::iterator it = conteneur_.begin();
+	auto iterateurPayePar = find_if(conteneur_.begin(), conteneur_.end(), bind(equal_to<Utilisateur*>(), payePar, _1));
+	for (it; it != conteneur_.end(); it++)
+	{
+		if (it != iterateurPayePar)
+		{
+			it->second -= montantReparti;
+		}
+	}
 }
 
 pair<Utilisateur*, double>& GestionnaireUtilisateurs::getMax() const

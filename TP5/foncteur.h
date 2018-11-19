@@ -5,6 +5,14 @@
 *******************************************/
 
 #include <map>
+#include <vector>
+#include <numeric>
+#include <iterator>
+#include <utility>
+#include "gestionnaireDepenses.h"
+#include "gestionnaireUtilisateurs.h"
+
+using namespace std;
 
 class AjouterDepense {
 public:
@@ -28,8 +36,7 @@ private:
 	map<Utilisateur*, double> conteneur_;
 };
 
-class FoncteurIntervalle
-{
+class FoncteurIntervalle {
 public:
 	FoncteurIntervalle(double borneInf, double borneSup): borneInf_(borneInf), borneSup_(borneSup) {};
 	bool operator()(pair<Utilisateur*, double> unePaire) {

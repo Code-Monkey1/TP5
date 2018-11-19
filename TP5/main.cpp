@@ -6,8 +6,7 @@
 
 /*
 QUESTIONS
-1.
-
+1. Il aurait été possible de créer un gestionnaire de transferts ayant un attribut conteneur_ de type multimap où un ou plusieurs transferts sont associés à chaque utilisateurs.
 
 2. Il faut inclure l'implementation des classes generiques directement dans le fichier .h pour que le compilateur sache que les méthodes implementees sont valides pour le type specifie. Autrement dit, quand le compilateur voit l'utilisation d'une classe generique, il doit avoir acces a la definition et a l'implementation pour produire une version specifique de la classe.
 

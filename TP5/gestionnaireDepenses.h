@@ -4,6 +4,7 @@
 #include "utilisateur.h"
 #include "gestionnaireGenerique.h"
 #include <vector>
+#include <numeric>
 
 
 

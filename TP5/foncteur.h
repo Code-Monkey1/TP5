@@ -6,10 +6,9 @@
 
 #include <map>
 
-class AjouterDepense
-{
+class AjouterDepense {
 public:
-	AjouterDepense(vector<Depense*>& depenses):conteneur_(depenses){};
+	AjouterDepense(vector<Depense*>& depenses):conteneur_(depenses) {};
 	vector<Depense*>& operator()(Depense* depense) {
 		conteneur_.push_back(depense);
 		return conteneur_;
@@ -25,7 +24,6 @@ public:
 		conteneur_.insert(make_pair(utilisateur, 0));
 		return conteneur_;
 	};
-
 private:
 	map<Utilisateur*, double> conteneur_;
 };

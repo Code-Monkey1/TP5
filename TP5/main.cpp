@@ -1,8 +1,18 @@
 /********************************************
 * Titre: Travail pratique #5 - main.cpp
-* Date: 4 nonvembre 2018
-* Auteur: Wassim Khene & Ryan Hardie
+* Date: 19 novembre 2018
+* Auteur: Raphael Geoffrion et Jules Lefebvre
 *******************************************/
+
+/*
+QUESTIONS
+1.
+
+
+2. Il faut inclure l'implementation des classes generiques directement dans le fichier .h pour que le compilateur sache que les méthodes implementees sont valides pour le type specifie. Autrement dit, quand le compilateur voit l'utilisation d'une classe generique, il doit avoir acces a la definition et a l'implementation pour produire une version specifique de la classe.
+
+3. Voir fichier pdf joint.
+*/
 
 #include <iostream>
 #include "depense.h";
